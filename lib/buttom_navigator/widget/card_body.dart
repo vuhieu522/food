@@ -1,120 +1,86 @@
 import 'package:flutter/material.dart';
-import '../../detail_screen/detail.dart';
-import '../../helper/assets_manager.dart';
 
-class CardBody extends StatefulWidget {
+class CardBody extends StatelessWidget {
+  final String title;
+  final String imageUrl;
+  final int id;
 
+  const CardBody(
+      {super.key,
+        required this.title,
+        required this.imageUrl,
+        required this.id});
 
-  CardBody({super.key, required this.isSelected});
-
-  bool isSelected = false;
-
-  @override
-  State<CardBody> createState() => _CardBodyState();
-}
-
-class _CardBodyState extends State<CardBody> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      color: widget.isSelected ? Colors.blue[400] : null,
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Container(
-              width: double.infinity,
-              height: 220,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AssetsManager.foodImage),
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(9),
-                  bottomLeft: Radius.circular(9),
-                ),
-              ),
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DetailScreen()));
-                },
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          const Expanded(
-            flex: 3,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'Instant Pot Rice Pilaf',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
-                  style: TextStyle(fontSize: 14),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.redAccent,
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
+      child: Card(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+                flex: 1,
+                child: Image.network(
+                  imageUrl,
+                  height: 150,
+                  fit: BoxFit.fitHeight,
+                )),
+            Expanded(
+              flex: 2,
+              child: Container(
+                height: 150,
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      title,
+                      style: const TextStyle(fontSize: 20),
+                      maxLines: 2,
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Column(
+                          children: [
+                            Icon(
+                              Icons.favorite,
+                            ),
+                            Text('100'),
+                          ],
                         ),
-                        Text('100'),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.schedule,
-                          color: Colors.yellow,
+                        SizedBox(
+                          width: 15,
                         ),
-                        Text('45'),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.eco,
-                          color: Colors.green,
+                        Column(
+                          children: [
+                            Icon(
+                              Icons.schedule,
+                              color: Colors.yellow,
+                            ),
+                            Text('45'),
+                          ],
                         ),
-                        Text('Vegan'),
+                        SizedBox(width: 15),
+                        Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.eco,
+                              color: Colors.green,
+                            ),
+                            Text('Vegan'),
+                          ],
+                        ),
                       ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

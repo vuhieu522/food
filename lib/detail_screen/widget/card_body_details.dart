@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CardDetails extends StatefulWidget {
-   const CardDetails({
-    super.key,
-    required this.stepName,
-  });
+import '../../model/instruction_model.dart';
 
-  final String stepName;
+class CardDetails extends StatelessWidget {
+  final List<RecipeStep> stepMeal;
+  final String nameMeal;
+  final int index;
 
-  @override
-  State<CardDetails> createState() => _CardDetailsState();
-}
-
-class _CardDetailsState extends State<CardDetails> {
+  const CardDetails(
+      {super.key, required this.nameMeal, required this.stepMeal, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +19,7 @@ class _CardDetailsState extends State<CardDetails> {
         height: 180,
         padding: const EdgeInsets.all(15.0),
         child: Stack(
-          children: [
+          children: <Widget>[
             const Padding(
               padding: EdgeInsets.only(top: 8.0),
               child: Icon(
@@ -37,23 +33,25 @@ class _CardDetailsState extends State<CardDetails> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(left: 35),
-                  child: Text(widget.stepName),
+                  child: Text('Number: ${stepMeal[index].number}'),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 35),
+                Padding(
+                  padding: const EdgeInsets.only(left: 35),
                   child: Text(
-                    'Lorem Ipsum',
-                    style: TextStyle(
+                    nameMeal,
+                    style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.green,
                     ),
                   ),
                 ),
-                const SizedBox(height: 5,),
-                const Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                  style: TextStyle(
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  stepMeal[index].step,
+                  style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                   ),
                   maxLines: 4,

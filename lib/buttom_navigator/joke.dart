@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody/helper/assets_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class JokePage extends StatelessWidget {
   const JokePage({super.key});
@@ -8,9 +9,9 @@ class JokePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Food Joke',
-          style: TextStyle(
+        title: Text(
+         AppLocalizations.of(context)!.joke,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),

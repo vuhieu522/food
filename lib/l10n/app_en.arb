@@ -1,0 +1,34 @@
+{
+  "recipes": "Recipes",
+  "@recipes": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Favorites food"
+  },
+  "joke": "Joke",
+  "@joke": {
+    "description": "Joke"
+  },
+  "overview": "Overview",
+  "@overview": {
+    "description": "overview"
+  },
+  "ingredients": "Ingredients",
+  "@ingredients": {
+    "description": "Ingredients"
+  },
+  "instructions": "Instructions",
+  "@instructions": {
+    "description": "Instructions"
+  },
+  "details": "Details",
+  "@details": {
+    "description": "Details"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Description"
+  }
+}

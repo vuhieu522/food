@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foody/buttom_navigator/favorites.dart';
 import 'package:foody/buttom_navigator/joke.dart';
 import 'package:foody/buttom_navigator/recipes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyBottomBar extends StatefulWidget {
   const MyBottomBar({super.key});
@@ -32,13 +33,13 @@ class _MyBottomBarState extends State<MyBottomBar> {
                 myCurrentIndex = index;
               });
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book_outlined), label: 'Recipes'),
+                  icon: const Icon(Icons.menu_book_outlined), label: AppLocalizations.of(context)!.recipes),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.star), label: 'Favorites'),
+                  icon: const Icon(Icons.star), label: AppLocalizations.of(context)!.favorites),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.tag_faces_rounded), label: 'Joke'),
+                  icon: const Icon(Icons.tag_faces_rounded), label: AppLocalizations.of(context)!.joke),
             ]),
         body: pages[myCurrentIndex],
       );
